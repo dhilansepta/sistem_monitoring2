@@ -116,7 +116,9 @@ class UserAuthController extends Controller
 
     public function dashboard()
     {
-        if(in_array(Auth::user()->role, ['kaprodi', 'gkmp'] )) {
+        if(Auth::user()->role == 'gkmf') {
+            return redirect()->route('gkmf.index');
+        } else if(in_array(Auth::user()->role, ['kaprodi', 'gkmp'] )) {
             if(Auth::user()->aktif_role->is_dosen == 0) {
                 return $this->adminDashboard();
             }
@@ -129,7 +131,11 @@ class UserAuthController extends Controller
 
     public function profile()
     {
-        if(in_array(Auth::user()->role, ['kaprodi', 'gkmp'] )) {
+        if(Auth::user()->role == 'gkmf') {
+            return view('user.profile', [
+                'user'  => Auth::user(),
+            ]);
+        } else if(in_array(Auth::user()->role, ['kaprodi', 'gkmp'] )) {
             if(Auth::user()->aktif_role->is_dosen == 1) {
                 return view('user.profile', [
                     'user'         => User::with('aktif_role')->where('id', Auth::user()->id)->first(),
@@ -145,7 +151,8 @@ class UserAuthController extends Controller
                                 ->groupBy('user_badges.id_user', 'user_badges.id_badge', 'nama_badge', 'gambar')
                                 ->get(),
             ]);
-        } return view('user.profile', [
+        } 
+        return view('user.profile', [
             'user'  => Auth::user(),
         ]);
     }

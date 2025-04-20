@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('avatar')->nullable()->default(null);
             $table->string('role');
+            $table->integer('prodi_id')->nullable();
             $table->rememberToken();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

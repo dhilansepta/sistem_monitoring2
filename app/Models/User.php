@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Score;
 use App\Models\Badge;
 use App\Models\LeaderBoard;
+use App\Models\ProgramStudi;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,6 +31,7 @@ class User extends Authenticatable
         'password',
         'avatar',
         'role',
+        'prodi_id'
     ];
 
     protected $dates = ['deleted_at'];
@@ -73,5 +75,10 @@ class User extends Authenticatable
     public function user_badge()
     {
         return $this->belongsToMany(Badge::class, 'user_badges', 'id_user', 'id_badge');
+    }
+
+    public function programStudi()
+    {
+        return $this->belongsTo(ProgramStudi::class, 'prodi_id');
     }
 }

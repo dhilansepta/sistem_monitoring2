@@ -13,6 +13,7 @@ use App\Http\Controllers\DokumenPerkuliahanController;
 use App\Http\Controllers\DokumenDitugaskanController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\LeaderBoardController;
+use App\Http\Controllers\ProgramStudiController;
 use App\Http\Middleware\Role;
 use App\Models\LeaderBoard;
 
@@ -153,3 +154,22 @@ Route::middleware(['auth', 'role:dosen'])->group(function () {
 });
 
 Route::get('/tes', [PenugasanController::class, 'stepTwo']);
+
+// Routes untuk GKMF
+Route::prefix('gkmf')->name('gkmf.')->group(function () {
+    Route::get('/', [UserManagementController::class, 'gkmfIndex'])->name('index');
+    Route::get('/create-user', [UserManagementController::class, 'gkmfCreateUser'])->name('create-user');
+    Route::post('/store-user', [UserManagementController::class, 'gkmfStoreUser'])->name('store-user');
+    Route::get('/edit-user/{id}', [UserManagementController::class, 'gkmfEditUser'])->name('edit-user');
+    Route::put('/update-user/{id}', [UserManagementController::class, 'gkmfUpdateUser'])->name('update-user');
+    
+    // Route untuk program studi
+    Route::get('/program-studi', [ProgramStudiController::class, 'index'])->name('program-studi.index');
+    Route::post('/program-studi/{prodi}/select', [ProgramStudiController::class, 'select'])->name('program-studi.select');
+    Route::get('/program-studi/create', [ProgramStudiController::class, 'create'])->name('program-studi.create');
+    Route::post('/program-studi', [ProgramStudiController::class, 'store'])->name('program-studi.store');
+    Route::get('/program-studi/{prodi}/edit', [ProgramStudiController::class, 'edit'])->name('program-studi.edit');
+    Route::put('/program-studi/{prodi}', [ProgramStudiController::class, 'update'])->name('program-studi.update');
+    Route::delete('/program-studi/{prodi}', [ProgramStudiController::class, 'destroy'])->name('program-studi.destroy');
+    Route::post('/program-studi/{prodi}/toggle-status', [ProgramStudiController::class, 'toggleStatus'])->name('program-studi.toggle-status');
+});

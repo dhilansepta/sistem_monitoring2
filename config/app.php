@@ -187,6 +187,8 @@ return [
          */
         Haruncpi\LaravelIdGenerator\IdGeneratorServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+
 
 
         /*
@@ -215,6 +217,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'IdGenerator' => Haruncpi\LaravelIdGenerator\IdGeneratorFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
     ])->toArray(),
 
 ];

@@ -47,6 +47,11 @@ class Role
                 }
             }
             abort(403, 'Anda tidak memiliki akses ke halaman ini');
+        } else if($role == 'gkmf') {
+            if ($request->user()->role == 'gkmf') {
+                return $next($request);
+            }
+            abort(403, 'Anda tidak memiliki akses ke halaman ini');
         }
         abort(403, 'Anda tidak memiliki akses ke halaman ini');
     }

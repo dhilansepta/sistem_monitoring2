@@ -237,5 +237,17 @@ class UserSeeder extends Seeder
             'password'  => Hash::make('password'),
             'role'      => 'admin',
         ]);
+
+        // Menambahkan user GKMF untuk testing
+        $user = User::create([
+            'nama'      => 'Testing GKMF',
+            'email'     => 'gkmf@itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'gkmf',
+        ]);
+
+        $user->aktif_role()->create([
+            'is_dosen'  => 0,
+        ]);
     }
 }
