@@ -50,13 +50,10 @@ Route::middleware(['auth', 'role:superAdmin'])->group(function () {
     // Penugasan
     Route::get('/penugasan', [PenugasanController::class, 'index']);
 
-    Route::get('/penugasan/buat-penugasan-baru/form-pertama', [PenugasanController::class, 'stepOne']);
-    Route::post('/penugasan/buat-penugasan-baru/store-form-kedua', [PenugasanController::class, 'storeStepOne']);
+    Route::get('/penugasan/buat-penugasan-baru/form-kedua', [PenugasanController::class, 'stepTwo'])->name('penugasan.step-two');
+    Route::post('/penugasan/buat-penugasan-baru/store-form-ketiga', [PenugasanController::class, 'storeStepTwo'])->name('penugasan.store-step-two');
 
-    Route::get('/penugasan/buat-penugasan-baru/form-kedua', [PenugasanController::class, 'stepTwo']);
-    Route::post('/penugasan/buat-penugasan-baru/store-form-ketiga', [PenugasanController::class, 'storeStepTwo']);
-
-    Route::get('/penugasan/buat-penugasan-baru/form-ketiga', [PenugasanController::class, 'stepThree']);
+    Route::get('/penugasan/buat-penugasan-baru/form-ketiga', [PenugasanController::class, 'stepThree'])->name('penugasan.step-three');
     Route::post('/penugasan/buat-penugasan-baru/store', [PenugasanController::class, 'storePenugasan'])->name('penugasan.store');
     
     Route::get('/penugasan/daftar-jumlah-kelas', [PenugasanController::class, 'showJumlahKelas']);
@@ -172,4 +169,6 @@ Route::prefix('gkmf')->name('gkmf.')->group(function () {
     Route::put('/program-studi/{prodi}', [ProgramStudiController::class, 'update'])->name('program-studi.update');
     Route::delete('/program-studi/{prodi}', [ProgramStudiController::class, 'destroy'])->name('program-studi.destroy');
     Route::post('/program-studi/{prodi}/toggle-status', [ProgramStudiController::class, 'toggleStatus'])->name('program-studi.toggle-status');
+    Route::get('/penugasan/buat-penugasan-baru/form-pertama', [PenugasanController::class, 'stepOne'])->name('penugasan.step-one');
+    Route::post('/penugasan/buat-penugasan-baru/store-form-pertama', [PenugasanController::class, 'storeStepOne'])->name('penugasan.store-step-one');
 });

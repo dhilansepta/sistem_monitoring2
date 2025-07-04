@@ -42,13 +42,21 @@ class PenugasanController extends Controller
         }
 
         $request->session()->put('tahun_ajaran', $request->all());
+        // save tahun ajaran ke database
+        TahunAjaran::create([
+            'tahun_ajaran' => $tahun_ajaran,
+            'is_aktif' => 0,
+        ]);
+
         
-        return redirect('/penugasan/buat-penugasan-baru/form-kedua');
+        return redirect()->route('gkmf.index')->with('success', 'Tahun ajaran berhasil ditambahkan.');
     }
 
     public function stepTwo()
     {
-        $data=session('tahun_ajaran');
+        // $data=session('tahun_ajaran');
+        $data=TahunAjaran::latest('id_tahun_ajaran')->first();
+        // dd($data);
         // $data['jenis']="Genap";
         $matkul=MataKuliah::matkulDibuka($data['jenis'])->get();
         $dokumen=DokumenPerkuliahan::all();

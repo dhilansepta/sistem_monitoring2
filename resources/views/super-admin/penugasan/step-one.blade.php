@@ -11,7 +11,7 @@
 
 @section('content')
     <!-- Progres -->
-    <div class="bg-body-light">
+    {{-- <div class="bg-body-light">
       <div class="content content-full">
           <div class="progresses py-4">
             <ul class="d-flex align-items-center justify-content-between row">
@@ -24,7 +24,7 @@
             </div>
         </div>
       </div>
-    </div>
+    </div> --}}
     <!-- END Progres -->
 
     <!-- Page Content -->
@@ -46,7 +46,7 @@
           <div class="row">
             <div class="col-lg">
               <!-- Form Horizontal - Default Style -->
-              <form action="/penugasan/buat-penugasan-baru/store-form-kedua" method="POST">
+              <form action="{{ route('gkmf.penugasan.store-step-one') }}" method="POST">
                 @csrf
                 <div class="space-y-4">
                   <h4 class="border-bottom pb-2">Tahun Ajaran Baru</h4>
@@ -89,7 +89,7 @@
 
                 <div class="row mt-5 text-end me-4 mb-3">
                   <div class="col">
-                    <button type="submit" class="btn btn-success">Selanjutnya</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                   </div>
                 </div>
               </form>

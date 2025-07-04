@@ -29,7 +29,7 @@
         
         <!-- Buat Penugasan Baru -->
         <div class="col-md-6 col-lg-4 col-xl-3">
-          <a class="block block-rounded block-link-pop h-100 mb-0 btn-penugasan" href="/penugasan/buat-penugasan-baru/form-pertama">
+          <a class="block block-rounded block-link-pop h-100 mb-0 btn-penugasan" href="{{ route('penugasan.step-two') }}">
             <div class="block-content block-content-full text-center bg-flat">
               <div class="item item-2x item-circle bg-white-10 py-3 my-3 mx-auto">
                 <i class="fa fa-user-plus fa-2x text-white-75"></i>
