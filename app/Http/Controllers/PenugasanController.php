@@ -82,7 +82,8 @@ class PenugasanController extends Controller
     public function stepThree()
     {
         $data = session('data');
-        $dosen = User::where('role', '!=', 'admin')->get();
+        $prodi_id = Auth::user()->prodi_id;
+        $dosen = User::where('role', '!=', 'admin')->where('prodi_id', $prodi_id)->get();
 
         $matkuls = MataKuliah::Select('nama_matkul')
             ->whereIn('kode_matkul', $data['kode_matkul'])->get();
