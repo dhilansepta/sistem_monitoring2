@@ -7,6 +7,7 @@ use App\Models\MataKuliah;
 use App\Models\DokumenPerkuliahan;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class DataManagementController extends Controller
@@ -18,8 +19,9 @@ class DataManagementController extends Controller
 
     public function showMatkul()
     {
+        $prodi_id = Auth::user()->prodi_id;
         // dd(nameRoles('midleRole'));
-        $matkul= MataKuliah::all();
+        $matkul= MataKuliah::where('prodi_id', $prodi_id)->get();
 
         return view('admin.data-management.matkul', ['matkul' => $matkul]);
     }
@@ -34,7 +36,13 @@ class DataManagementController extends Controller
             'praktikum' => 'required',
         ]);
 
-        MataKuliah::create($data);
+        $matkul = MataKuliah::create($data);
+
+        $prodi_id = Auth::user()->prodi_id;
+
+        $matkul->update([
+            'prodi_id' => $prodi_id,
+        ]);
         
         return redirect()->back()->with('success', 'Data mata kuliah berhasil ditambahkan');
     }

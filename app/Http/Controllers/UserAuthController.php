@@ -58,6 +58,9 @@ class UserAuthController extends Controller
     {
         $dokumen_ditugaskan= DokumenDitugaskan::dokumenAktif()->orderBy('id_dokumen_ditugaskan', 'asc')->get();
 
+        // prodi id yg login
+        $prodi_id = Auth::user()->prodi_id;
+
         $kelas=Kelas::with(['dosen_kelas', 'matkul','dokumen_kelas' => function($query) {
             $query->with('dokumen_ditugaskan');
             }, 'kelas_dokumen_matkul' => function($query) {
@@ -75,7 +78,7 @@ class UserAuthController extends Controller
 
         $jumlahKelas=count($kelas);
 
-        $jumlahDosen=User::where('role', '!=', 'admin')->count();
+        $jumlahDosen=User::where('role', '!=', 'admin')->where('prodi_id', $prodi_id)->count();
         
 
         return view('admin.dashboard', [

@@ -14,23 +14,25 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $user=User::create([
+        $user1=User::create([
             'nama'      => 'Andika Setiawan S.Kom., M.Cs.',
             'email'     => 'andika.setiawan@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'kaprodi',
+            'prodi_id'  => 1,
         ]);
-        $user->aktif_role()->create([
+        $user1->aktif_role()->create([
             'is_dosen'  => 0,
         ]);
 
-        $user=User::create([
+        $user2=User::create([
             'nama'      => 'Eko Dwi Nugroho, S.Kom., M.Cs.',
             'email'     => 'eko.nugroho@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'gkmp',
+            'prodi_id'  => 1,
         ]);
-        $user->aktif_role()->create([
+        $user2->aktif_role()->create([
             'is_dosen'  => 0,
         ]);
 
@@ -39,6 +41,7 @@ class UserSeeder extends Seeder
             'email'     => 'ade.setiawan@staff.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'admin',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -46,6 +49,7 @@ class UserSeeder extends Seeder
             'email'     => 'hira@informatika.org',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -53,6 +57,7 @@ class UserSeeder extends Seeder
             'email'     => 'rajif@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -60,6 +65,7 @@ class UserSeeder extends Seeder
             'email'     => 'raidah.hanifah@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -67,6 +73,7 @@ class UserSeeder extends Seeder
             'email'     => 'rahman.indra@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -74,6 +81,7 @@ class UserSeeder extends Seeder
             'email'     => 'arkham@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -81,6 +89,7 @@ class UserSeeder extends Seeder
             'email'     => 'hafiz.budi@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -88,6 +97,7 @@ class UserSeeder extends Seeder
             'email'     => 'imam.wicaksono@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -95,6 +105,7 @@ class UserSeeder extends Seeder
             'email'     => 'wayan.wisesa@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -102,6 +113,7 @@ class UserSeeder extends Seeder
             'email'     => 'hartanto.tantriawan@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -109,6 +121,7 @@ class UserSeeder extends Seeder
             'email'     => 'angga.wijaya@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -116,6 +129,7 @@ class UserSeeder extends Seeder
             'email'     => 'amirul.iqbal@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -123,6 +137,7 @@ class UserSeeder extends Seeder
             'email'     => 'mohamad.idris@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -130,6 +145,7 @@ class UserSeeder extends Seeder
             'email'     => 'arief.ichwani@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -137,6 +153,7 @@ class UserSeeder extends Seeder
             'email'     => 'martin.manullang@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -144,6 +161,7 @@ class UserSeeder extends Seeder
             'email'     => 'mugi.praseptiawan@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -151,6 +169,7 @@ class UserSeeder extends Seeder
             'email'     => 'cahyo.untoro@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -158,6 +177,7 @@ class UserSeeder extends Seeder
             'email'     => 'aidil.afriansyah@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -165,6 +185,7 @@ class UserSeeder extends Seeder
             'email'     => 'andre.febrianto@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -172,6 +193,7 @@ class UserSeeder extends Seeder
             'email'     => 'firman.ashari@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -179,6 +201,7 @@ class UserSeeder extends Seeder
             'email'     => 'muhammad.algifari@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -186,13 +209,15 @@ class UserSeeder extends Seeder
             'email'     => 'radhinka.bagaskara@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
         User::create([
             'nama'      => 'Winda Yulita, M.Cs. ',
             'email'     => 'winda.yulita@if.itera.ac.id',
             'password'  => Hash::make('password'),
-            'role'      => 'dosen',
+            'role'      => 'dosen', 
+            'prodi_id'  => 1,
         ]);
 
         User::create([
@@ -200,27 +225,30 @@ class UserSeeder extends Seeder
             'email'     => 'miranti.verdiana@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'dosen',
+            'prodi_id'  => 1,
         ]);
 
-        $user=User::create([
+        $user3=User::create([
             'nama'      => 'Testing kaprodi',
             'email'     => 'kaprodi@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'kaprodi',
+            'prodi_id'  => 1,
         ]);
 
-        $user->aktif_role()->create([
+        $user3->aktif_role()->create([
             'is_dosen'  => 0,
         ]);
 
-        $user=user::create([
+        $user4=User::create([
             'nama'      => 'Testing gkmp',
             'email'     => 'gkmp@if.itera.ac.id',
             'password'  => Hash::make('password'),
             'role'      => 'gkmp',
+            'prodi_id'  => 1,
         ]);
 
-        $user->aktif_role()->create([
+        $user4->aktif_role()->create([
             'is_dosen'  => 0,
         ]);
 
@@ -237,6 +265,103 @@ class UserSeeder extends Seeder
             'password'  => Hash::make('password'),
             'role'      => 'admin',
         ]);
+
+        $user5=User::create([
+            'nama'      => 'Kaprodi Prodi Pangan',
+            'email'     => 'kaprodi@pangan.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'kaprodi',
+            'prodi_id'  => 2,
+        ]);
+
+        $user5->aktif_role()->create([
+            'is_dosen'  => 0,
+        ]);
+
+         $user6=User::create([
+            'nama'      => 'gkmp Prodi Pangan',
+            'email'     => 'gkmp@pangan.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'gkmp',
+            'prodi_id'  => 2,
+        ]);
+
+        $user6->aktif_role()->create([
+            'is_dosen'  => 0,
+        ]);
+
+        User::create([
+            'nama'      => 'dosen1 Prodi Pangan',
+            'email'     => 'dosen1@pangan.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'dosen',
+            'prodi_id'  => 2,
+        ]);
+        
+        User::create([
+            'nama'      => 'dosen2 Prodi Pangan',
+            'email'     => 'dosen2@pangan.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'dosen',
+            'prodi_id'  => 2,
+        ]);
+
+        User::create([
+            'nama'      => 'dosen3 Prodi Pangan',
+            'email'     => 'dosen3@pangan.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'dosen',
+            'prodi_id'  => 2,
+        ]);
+
+        $user7=User::create([
+            'nama'      => 'Kaprodi Prodi Material',
+            'email'     => 'kaprodi@material.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'kaprodi',
+            'prodi_id'  => 2,
+        ]);
+
+        $user7->aktif_role()->create([
+            'is_dosen'  => 0,
+        ]);
+
+         $user8=User::create([
+            'nama'      => 'gkmp Prodi Material',
+            'email'     => 'gkmp@material.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'gkmp',
+            'prodi_id'  => 2,
+        ]);
+
+        $user8->aktif_role()->create([
+            'is_dosen'  => 0,
+        ]);
+
+        User::create([
+            'nama'      => 'dosen1 Prodi Material',
+            'email'     => 'dosen1@material.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'dosen',
+            'prodi_id'  => 2,
+        ]);
+        
+        User::create([
+            'nama'      => 'dosen2 Prodi Material',
+            'email'     => 'dosen2@material.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'dosen',
+            'prodi_id'  => 2,
+        ]);
+
+        User::create([
+            'nama'      => 'dosen3 Prodi Material',
+            'email'     => 'dosen3@material.itera.ac.id',
+            'password'  => Hash::make('password'),
+            'role'      => 'dosen',
+            'prodi_id'  => 2,
+        ]);
+
 
         // Menambahkan user GKMF untuk testing
         $user = User::create([

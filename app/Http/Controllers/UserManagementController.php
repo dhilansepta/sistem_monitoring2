@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\ProgramStudi;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserManagementController extends Controller
 {
@@ -25,7 +26,7 @@ class UserManagementController extends Controller
 
     public function index()
     {
-        $data=User::get();
+        $data=User::where('prodi_id', Auth::user()->prodi_id)->get();
         // dd($data);
 
         return view('admin.user-management', ['data' => $data]);
@@ -54,15 +55,17 @@ class UserManagementController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'role' => 'required|in:kaprodi,gkmp',
-            'prodi' => 'required|exists:program_studis,id'
+            'prodi_id' => 'required|integer'
         ]);
+
+        $prodi = intval($request->prodi_id);
 
         $user = User::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'prodi_id' => $request->prodi
+            'prodi_id' => $prodi
         ]);
 
         $user->aktif_role()->create([
@@ -89,14 +92,17 @@ class UserManagementController extends Controller
             'nama' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'role' => 'required|in:kaprodi,gkmp',
-            'prodi' => 'required|in:Teknik Informatika,Teknik Mesin,Geologi,Teknik Industri,Teknik Kimia,Teknik Pangan,Teknik Elektro'
+            'prodi_id' => 'required|integer',
         ]);
+
+        $prodi = intval($request->prodi_id);
 
         $user->update([
             'nama' => $request->nama,
             'email' => $request->email,
             'role' => $request->role,
-            'prodi' => $request->prodi
+            //'prodi' => $request->prodi_id,
+            'prodi_id' => $prodi,
         ]);
 
         if ($request->filled('password')) {
@@ -115,16 +121,17 @@ class UserManagementController extends Controller
             'email'     => 'required|email|unique:users',
             'password'  => 'required|min:5|max:30',
             'role'      => 'required',
-            'prodi'     => 'required|in:Teknik Informatika,Teknik Mesin,Geologi,Teknik Industri,Teknik Kimia,Teknik Pangan,Teknik Elektro'
+            'prodi_id'  => 'required|integer'
         ]);
 
-        //create user
+        $prodi = intval($request->prodi_id);
+        
         $user=User::create([
             'nama'      => $request->nama,
             'email'     => $request->email,
             'password'  => Hash::make($request->password),
             'role'      => $request->role,
-            'prodi'     => $request->prodi
+            'prodi_id'  => $prodi
         ]);
 
         if(in_array($request->role, ['kaprodi', 'gkmp'])) {
@@ -141,8 +148,10 @@ class UserManagementController extends Controller
         $request->validate([
             'nama'      => 'required|max:255',
             'role'      => 'required',
-            'prodi'     => 'required|in:Teknik Informatika,Teknik Mesin,Geologi,Teknik Industri,Teknik Kimia,Teknik Pangan,Teknik Elektro'
+            'prodi_id'     => 'required|integer'
         ]);
+
+        $prodi = intval($request->prodi_id);
     
         $pengguna=User::find($id);
         if($pengguna->email != $request->email) {
@@ -156,7 +165,7 @@ class UserManagementController extends Controller
                 'nama'      => $request->nama,
                 'email'     => $request->email,
                 'role'      => $request->role,
-                'prodi'     => $request->prodi
+                'prodi_id'     => $prodi
             ]);
 
             $this->CreateorDeleteAktifRole($id, $pengguna->role, $request->role);
@@ -170,7 +179,7 @@ class UserManagementController extends Controller
                 'email'     => $request->email,
                 'password'  => Hash::make($request->password),
                 'role'      => $request->role,
-                'prodi'     => $request->prodi
+                'prodi_id'     => $request->prodi
             ]);
 
             $this->CreateorDeleteAktifRole($id, $pengguna->role, $request->role);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('kode_matkul', 10)->primary();
             $table->string('nama_matkul');
             $table->integer('bobot_sks');
+            $table->foreignId('prodi_id')->nullable();
             $table->boolean('praktikum');
         });
     }

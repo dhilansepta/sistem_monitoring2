@@ -19,6 +19,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pengenalan Program Studi Teknik Informatika',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
         
         MataKuliah::create([
@@ -26,6 +27,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Algoritma Pemrograman 1',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -33,6 +35,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Algoritma Pemrograman 2',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -40,6 +43,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Matematika Diskrit',
             'bobot_sks' => 4,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -47,6 +51,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Matriks dan Ruang vektor',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -54,6 +59,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Algoritma dan Struktur Data',
             'bobot_sks' => 4,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -61,6 +67,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Organisasi dan Arsitektur Komputer',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -68,6 +75,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Teori Bahasa Formal dan Otomata',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -75,6 +83,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pemrograman Berorientasi Objek',
             'bobot_sks' => 4,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -82,6 +91,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Strategi Algoritma',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -89,6 +99,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Sistem Operasi',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -96,6 +107,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Basis Data',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -103,6 +115,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Dasar Rekayasa Perangkat Lunak',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -110,6 +123,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Probabilitas dan Statistika',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -117,6 +131,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Metodologi Penelitian ',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -124,6 +139,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Jaringan Komputer',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -131,6 +147,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Interaksi Manusia dan Komputer',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -138,6 +155,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Inteligensi Buatan',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -145,6 +163,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Sistem Informasi',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -152,6 +171,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Kewirausahaan',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -159,6 +179,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Sistem Tertanam',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -166,6 +187,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Manajemen Basis Data',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -173,6 +195,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pemrograman Web',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -180,6 +203,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Manajemen Proyek Teknologi Informasi',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -187,6 +211,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Proyek Teknologi Informasi',
             'bobot_sks' => 4,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -194,6 +219,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Socio Informatika dan Etika Profesi',
             'bobot_sks' => 2,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -201,6 +227,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Kapita Selekta Informatika',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -208,6 +235,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Jaringan Komputer Lanjut',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -215,6 +243,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Teknologi game',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -222,6 +251,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pengolahan Sinyal Digital',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -229,6 +259,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Kriptografi',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -236,6 +267,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pengembangan Aplikasi Mobile',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -243,6 +275,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Data Warehouse / Data Mining',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -250,6 +283,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pengolahan Bahasa Alami',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -257,6 +291,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pembelajaran Mesin',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -264,6 +299,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Representasi Pengetahuan dan Penalaran',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -271,6 +307,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Information Retrieval (Perolehan Informasi)',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -278,6 +315,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Sistem/Teknologi Multimedia',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -285,6 +323,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pervasive Computing',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -292,6 +331,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pemrograma Paralel',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -299,6 +339,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Keamanan Jaringan',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -306,6 +347,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pemrograman Web Lanjut',
             'bobot_sks' => 3,
             'praktikum' => 1,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -313,6 +355,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Pengolahan Citra Digital',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -320,6 +363,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Teknologi Basis Data',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -327,6 +371,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Visualisasi Data dan Informasi',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -334,6 +379,7 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Sistem Informasi Geografis',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
         ]);
 
         MataKuliah::create([
@@ -341,6 +387,55 @@ class MataKuliahSeeder extends Seeder
             'nama_matkul' => 'Sistem Informasi Lanjut',
             'bobot_sks' => 3,
             'praktikum' => 0,
+            'prodi_id' => 1,
+        ]);
+
+        MataKuliah::create([
+            'kode_matkul' => 'TP1101',
+            'nama_matkul' => 'Matkul Tekpang1',
+            'bobot_sks' => 3,
+            'praktikum' => 0,
+            'prodi_id' => 2,
+        ]);
+
+        MataKuliah::create([
+            'kode_matkul' => 'TP1102',
+            'nama_matkul' => 'Matkul Tekpang2',
+            'bobot_sks' => 3,
+            'praktikum' => 0,
+            'prodi_id' => 2,
+        ]);
+
+        MataKuliah::create([
+            'kode_matkul' => 'TP1103',
+            'nama_matkul' => 'Matkul Tekpang3',
+            'bobot_sks' => 3,
+            'praktikum' => 0,
+            'prodi_id' => 2,
+        ]);
+
+        MataKuliah::create([
+            'kode_matkul' => 'MT1101',
+            'nama_matkul' => 'Matkul Material1',
+            'bobot_sks' => 3,
+            'praktikum' => 0,
+            'prodi_id' => 2,
+        ]);
+
+        MataKuliah::create([
+            'kode_matkul' => 'MT1102',
+            'nama_matkul' => 'Matkul Material2',
+            'bobot_sks' => 3,
+            'praktikum' => 0,
+            'prodi_id' => 2,
+        ]);
+
+        MataKuliah::create([
+            'kode_matkul' => 'MT1103',
+            'nama_matkul' => 'Matkul Material3',
+            'bobot_sks' => 3,
+            'praktikum' => 0,
+            'prodi_id' => 2,
         ]);
     }
 }

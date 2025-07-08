@@ -20,6 +20,7 @@ class MataKuliah extends Model
         'nama_matkul',
         'bobot_sks',
         'praktikum',
+        'prodi_id',
     ];
 
     public function scopeMatkulDibuka($query, $jenis)
@@ -49,5 +50,10 @@ class MataKuliah extends Model
     public function dokumen_matkul()
     {
         return $this->hasMany(DokumenMatkul::class, 'kode_matkul');
+    }
+
+    public function programStudi()
+    {
+        return $this->belongsTo(ProgramStudi::class, 'prodi_id');
     }
 }
