@@ -56,4 +56,9 @@ class MataKuliah extends Model
     {
         return $this->belongsTo(ProgramStudi::class, 'prodi_id');
     }
+
+    public function matkulDibuka()
+    {
+        return $this->hasMany(MatkulDibuka::class, 'kode_matkul', 'kode_matkul');
+    }
 }

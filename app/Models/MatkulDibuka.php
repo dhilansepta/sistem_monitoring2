@@ -73,4 +73,9 @@ class MatkulDibuka extends Model
     {
         return $this->belongsTo(TahunAjaran::class, 'id_tahun_ajaran');
     }
+
+    public function matkul()
+    {
+        return $this->belongsTo(MataKuliah::class, 'kode_matkul', 'kode_matkul');
+    }
 }

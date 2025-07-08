@@ -12,6 +12,7 @@ use App\Models\MataKuliah;
 use App\Models\MatkulDibuka;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PenugasanController extends Controller
 {
@@ -34,34 +35,34 @@ class PenugasanController extends Controller
             'tanggal_mulai_kuliah' => 'required',
         ]);
 
-        $tahun_ajaran=$request->tahun1.'/'.$request->tahun2.' '.$request->jenis;
+        $tahun_ajaran = $request->tahun1 . '/' . $request->tahun2 . ' ' . $request->jenis;
 
-        $data_tahun_ajaran=TahunAjaran::where('tahun_ajaran', $tahun_ajaran)->first();
-        if($data_tahun_ajaran) {
+        $data_tahun_ajaran = TahunAjaran::where('tahun_ajaran', $tahun_ajaran)->first();
+        if ($data_tahun_ajaran) {
             return redirect()->back()->with('failed', 'Tahun ajaran sudah ada!');
         }
 
-        $tahun_aktif=TahunAjaran::where('is_aktif', 1)->first();
-        if($tahun_aktif) {
+        $tahun_aktif = TahunAjaran::where('is_aktif', 1)->first();
+        if ($tahun_aktif) {
             Gamifikasi::storeResultBadge($tahun_aktif->id_tahun_ajaran);
             $tahun_aktif->update(['is_aktif' => 0]);
         }
-        
+
         // save tahun ajaran ke database
         TahunAjaran::create([
             'tahun_ajaran' => $tahun_ajaran,
             'is_aktif' => 1,
         ]);
 
-        
+
         return redirect()->route('gkmf.index')->with('success', 'Tahun ajaran berhasil ditambahkan.');
     }
 
     public function stepTwo()
     {
-        $data=TahunAjaran::latest('id_tahun_ajaran')->first();
-        $matkul=MataKuliah::matkulDibuka($data['jenis'])->get();
-        $dokumen=DokumenPerkuliahan::all();
+        $data = TahunAjaran::latest('id_tahun_ajaran')->first();
+        $matkul = MataKuliah::matkulDibuka($data['jenis'])->get();
+        $dokumen = DokumenPerkuliahan::all();
         return view('super-admin.penugasan.step-two', ['data' => $data, 'matkul' => $matkul, 'dokumen' => $dokumen]);
     }
 
@@ -72,7 +73,7 @@ class PenugasanController extends Controller
             'jumlah' => 'required',
             'dokumen' => 'required',
         ]);
-        
+
         $request->session()->put('data', $request->all());
 
         return redirect('/penugasan/buat-penugasan-baru/form-ketiga');
@@ -80,12 +81,12 @@ class PenugasanController extends Controller
 
     public function stepThree()
     {
-        $data=session('data');
-        $dosen=User::where('role', '!=', 'admin')->get();
-        
-        $matkuls=MataKuliah::Select('nama_matkul')
+        $data = session('data');
+        $dosen = User::where('role', '!=', 'admin')->get();
+
+        $matkuls = MataKuliah::Select('nama_matkul')
             ->whereIn('kode_matkul', $data['kode_matkul'])->get();
-        
+
         return view('super-admin.penugasan.step-three', ['data' => $data, 'dosen' => $dosen, 'matkuls' => $matkuls]);
         // return view('test3', ['data' => $data, 'dosen' => $dosen]);
     }
@@ -97,14 +98,14 @@ class PenugasanController extends Controller
             'id_dosen'      => 'required',
             'id_dokumen'    => 'required',
         ]);
-        $data=session('data');
+        $data = session('data');
         // dd($data);
 
-        $tahun=TahunAjaran::where('is_aktif', 1)->first();
-       
-        $mata_kuliah=MataKuliah::whereIn('kode_matkul', $data['kode_matkul'])->get();
-        foreach($mata_kuliah as $key => $matkul) {
-            $matkul_dibuka=MatkulDibuka::create([
+        $tahun = TahunAjaran::where('is_aktif', 1)->first();
+
+        $mata_kuliah = MataKuliah::whereIn('kode_matkul', $data['kode_matkul'])->get();
+        foreach ($mata_kuliah as $key => $matkul) {
+            $matkul_dibuka = MatkulDibuka::create([
                 'kode_matkul' => $matkul->kode_matkul,
                 'id_tahun_ajaran' => $tahun->id_tahun_ajaran,
                 'nama_matkul' => $matkul->nama_matkul,
@@ -112,34 +113,34 @@ class PenugasanController extends Controller
                 'praktikum' => $matkul->praktikum,
             ]);
 
-            for($i=0; $i<$data['jumlah'][$key]; $i++) {
-                $kelas=Kelas::create([
+            for ($i = 0; $i < $data['jumlah'][$key]; $i++) {
+                $kelas = Kelas::create([
                     'nama_kelas'       => $request->nama_kelas[$key][$i],
                     'id_matkul_dibuka' => $matkul_dibuka->id_matkul_dibuka,
                     'id_tahun_ajaran'  => $tahun->id_tahun_ajaran,
                 ]);
-    
-                foreach($request->id_dosen[$key][$i] as $dosen) {
+
+                foreach ($request->id_dosen[$key][$i] as $dosen) {
                     $kelas->dosen_kelas()->attach($dosen);
                 }
             }
         }
 
-        $kelas=Kelas::with('dosen_kelas')->kelasAktif()->get();
+        $kelas = Kelas::with('dosen_kelas')->kelasAktif()->get();
 
-        $matkuls=MatkulDibuka::with(['kelas' => function($query) {
-                $query->with('dosen_kelas');
-            }])->matkulAktif()->get();
+        $matkuls = MatkulDibuka::with(['kelas' => function ($query) {
+            $query->with('dosen_kelas');
+        }])->matkulAktif()->get();
         // dd($matkuls);   
-        
-        $dokumen_perkuliahan=DokumenPerkuliahan::whereIn('id_dokumen', $request->id_dokumen)->get();
 
-        $tahun_ajar=TahunAjaran::where('is_aktif', 1)->first();
+        $dokumen_perkuliahan = DokumenPerkuliahan::whereIn('id_dokumen', $request->id_dokumen)->get();
+
+        $tahun_ajar = TahunAjaran::where('is_aktif', 1)->first();
         // dd($tahun_ajar);
-        foreach($dokumen_perkuliahan as $key => $dokumen) {
-            $tenggat=createTenggat($tahun_ajar['tanggal_mulai_kuliah'], $dokumen->tenggat_waktu_default);
-           
-            $dokumen_ditugaskan=DokumenDitugaskan::create([
+        foreach ($dokumen_perkuliahan as $key => $dokumen) {
+            $tenggat = createTenggat($tahun_ajar['tanggal_mulai_kuliah'], $dokumen->tenggat_waktu_default);
+
+            $dokumen_ditugaskan = DokumenDitugaskan::create([
                 'id_dokumen'            => $dokumen->id_dokumen,
                 'id_tahun_ajaran'       => $tahun->id_tahun_ajaran,
                 'nama_dokumen'          => $dokumen->nama_dokumen,
@@ -149,12 +150,12 @@ class PenugasanController extends Controller
                 'dikumpul'              => $request->dikumpul[$key],
             ]);
 
-            if($dokumen_ditugaskan->dikumpulkan_per == 1) {
-                foreach($kelas as $kls) {
+            if ($dokumen_ditugaskan->dikumpulkan_per == 1) {
+                foreach ($kelas as $kls) {
                     $dokumen_kelas = $kls->dokumen_kelas()->create([
                         'id_dokumen_ditugaskan' => $dokumen_ditugaskan->id_dokumen_ditugaskan,
                     ]);
-                    foreach($kls->dosen_kelas as $dsn) {
+                    foreach ($kls->dosen_kelas as $dsn) {
                         $dokumen_kelas->scores()->create([
                             'id_dosen'        => $dsn->id,
                             'kode_kelas'      => $kls->kode_kelas,
@@ -163,19 +164,19 @@ class PenugasanController extends Controller
                     }
                 }
             } else {
-                foreach($matkuls as $mkl) {
-                    if($mkl->praktikum == 0  && $dokumen->id_dokumen == 'DP00000003') {
-                        continue; 
+                foreach ($matkuls as $mkl) {
+                    if ($mkl->praktikum == 0  && $dokumen->id_dokumen == 'DP00000003') {
+                        continue;
                     }
 
                     $dokumen_matkul = $mkl->dokumen_matkul()->create([
                         'id_dokumen_ditugaskan' => $dokumen_ditugaskan->id_dokumen_ditugaskan,
                     ]);
-        
-                    foreach($mkl->kelas as $kls) {
+
+                    foreach ($mkl->kelas as $kls) {
                         $kls->kelas_dokumen_matkul()->attach($dokumen_matkul->id_dokumen_matkul);
 
-                        foreach($kls->dosen_kelas as $dsn) {
+                        foreach ($kls->dosen_kelas as $dsn) {
                             $dokumen_matkul->scores()->create([
                                 'id_dosen'        => $dsn->id,
                                 'kode_kelas'      => $kls->kode_kelas,
@@ -188,19 +189,22 @@ class PenugasanController extends Controller
         }
 
         $request->session()->forget('tahun_ajaran');
-        $request->session()->forget('data');    
-                        
+        $request->session()->forget('data');
+
         return redirect('/penugasan')->with('success', 'Penugasan berhasil ditambahkan');
     }
 
     public function showJumlahKelas()
     {
-        $tahun_ajaran=TahunAjaran::orderBy('id_tahun_ajaran', 'desc')->get();
-        $tahun_aktif=TahunAjaran::tahunAktif()->first();
+        $tahun_ajaran = TahunAjaran::orderBy('id_tahun_ajaran', 'desc')->get();
+        $tahun_aktif = TahunAjaran::tahunAktif()->first();
 
-        $matkul= MatkulDibuka::with('kelas')->withCount(['kelas as banyak_kelas'])
-                ->matkulTahun(request('tahun_ajaran'))->get();
-
+        $prodi_id = Auth::user()->prodi_id;
+        $matkul = MatkulDibuka::with('kelas')->withCount(['kelas as banyak_kelas'])
+            ->whereHas('matkul', function ($query) use ($prodi_id) {
+                $query->where('prodi_id', $prodi_id);
+            })
+            ->matkulTahun(request('tahun_ajaran'))->get();
 
         return view('super-admin.penugasan.daftar-jumlah-kelas', [
             'matkul'       => $matkul,
