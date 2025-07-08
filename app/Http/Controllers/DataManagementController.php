@@ -93,6 +93,7 @@ class DataManagementController extends Controller
             'nama_dokumen'          => 'required',
             'tenggat_waktu_default' => 'required',
             'dikumpulkan_per'       => 'required',
+            'sesi'                  => 'required|integer',
             'template'              => 'mimes:docx,doc,xls,xlsx,zip|max:2048'
         ]);
 
@@ -108,6 +109,7 @@ class DataManagementController extends Controller
                 'nama_dokumen'          => $request->nama_dokumen,
                 'tenggat_waktu_default' => $request->tenggat_waktu_default,
                 'dikumpulkan_per'       => $request->dikumpulkan_per,
+                'sesi'                  => $request->sesi,
                 'template'              => $nama_dokumen,
         ]);
         } else {
@@ -116,6 +118,7 @@ class DataManagementController extends Controller
                 'nama_dokumen'          => $request->nama_dokumen,
                 'tenggat_waktu_default' => $request->tenggat_waktu_default,
                 'dikumpulkan_per'       => $request->dikumpulkan_per,
+                'sesi'                  => $request->sesi,
         ]);
         }
         
@@ -129,6 +132,7 @@ class DataManagementController extends Controller
             'nama_dokumen'          => 'required',
             'tenggat_waktu_default' => 'required',
             'dikumpulkan_per'       => 'required',
+            'sesi'                  => 'required|integer',
             'template'              => 'mimes:docx,doc,xls,xlsx,zip|max:2048'
             ]);
 
@@ -144,6 +148,7 @@ class DataManagementController extends Controller
                 'nama_dokumen'          => $request->nama_dokumen,
                 'tenggat_waktu_default' => $request->tenggat_waktu_default,
                 'dikumpulkan_per'       => $request->dikumpulkan_per,
+                'sesi'                  => $request->sesi,
                 'template'              => $nama_dokumen,
             ]);
         } else {
@@ -151,6 +156,7 @@ class DataManagementController extends Controller
                 'nama_dokumen'          => $request->nama_dokumen,
                 'tenggat_waktu_default' => $request->tenggat_waktu_default,
                 'dikumpulkan_per'       => $request->dikumpulkan_per,
+                'sesi'                  => $request->sesi,
             ]);
         }
         

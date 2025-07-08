@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('dokumen_perkuliahan', function (Blueprint $table) {
             $table->string('id_dokumen', 10)->primary();
             $table->string('nama_dokumen');
+            $table->integer('sesi')->nullable();
             $table->integer('tenggat_waktu_default');
             $table->tinyInteger('dikumpulkan_per');
             $table->string('template')->nullable();

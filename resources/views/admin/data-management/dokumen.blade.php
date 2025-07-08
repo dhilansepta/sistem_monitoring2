@@ -96,6 +96,14 @@
                                 name="nama_dokumen"
                                 value="{{ old('nama_dokumen') }}"
                                 required />
+                            <label for="example-text-input">Sesi</label>
+                            <input
+                                type="number"
+                                class="form-control mb-2"
+                                placeholder="Masukkan Sesi"
+                                name="sesi"
+                                value="{{ old('sesi') }}"
+                                required />
                             <label for="example-text-input">Minggu Tenggat Waktu</label>
                             <input
                                 type="number"
@@ -210,6 +218,14 @@
                                 placeholder="Masukkan Nama Dokumen Perkuliahan"
                                 id="nama_dokumen"
                                 name="nama_dokumen"
+                                required />
+                            <label for="example-text-input">Sesi</label>
+                            <input
+                                type="number"
+                                class="form-control mb-2"
+                                placeholder="Masukkan Sesi"
+                                name="sesi"
+                                value="{{ old('sesi') }}"
                                 required />
                             <label for="example-text-input">Minggu Tenggat Waktu</label>
                             <input
