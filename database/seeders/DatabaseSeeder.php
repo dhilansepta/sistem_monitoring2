@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             DokumenPerkuliahanSeeder::class,
             MataKuliahSeeder::class,
             MatkulDibukaSeeder::class,
-            // KelasSeeder::class,
+            KelasSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

@@ -15,7 +15,7 @@ class MatkulDibukaSeeder extends Seeder
     public function run(): void
     {
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD001',
+            'id_matkul_dibuka' => 'MK0000001',
             'kode_matkul' => 'IF1101',
             'id_tahun_ajaran' => 1,
             'nama_matkul' => 'Pengenalan Program Studi Teknik Informatika',
@@ -24,7 +24,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD002',
+            'id_matkul_dibuka' => 'MK0000002',
             'kode_matkul' => 'IF1121',
             'id_tahun_ajaran' => 1,
             'nama_matkul' => 'Algoritma Pemrograman 1',
@@ -33,7 +33,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD003',
+            'id_matkul_dibuka' => 'MK0000003',
             'kode_matkul' => 'IF1101',
             'id_tahun_ajaran' => 2,
             'nama_matkul' => 'Pengenalan Program Studi Teknik Informatika',
@@ -42,7 +42,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD004',
+            'id_matkul_dibuka' => 'MK0000004',
             'kode_matkul' => 'IF1121',
             'id_tahun_ajaran' => 2,
             'nama_matkul' => 'Algoritma Pemrograman 1',
@@ -51,7 +51,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD005',
+            'id_matkul_dibuka' => 'MK0000005',
             'kode_matkul' => 'TP1101',
             'id_tahun_ajaran' => 1,
             'nama_matkul' => 'Matkul Tekpang1',
@@ -59,7 +59,7 @@ class MatkulDibukaSeeder extends Seeder
             'praktikum' => 0,
         ]);
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD006',
+            'id_matkul_dibuka' => 'MK0000006',
             'kode_matkul' => 'TP1102',
             'id_tahun_ajaran' => 1,
             'nama_matkul' => 'Matkul Tekpang2',
@@ -68,7 +68,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
        MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD007',
+            'id_matkul_dibuka' => 'MK0000007',
             'kode_matkul' => 'TP1101',
             'id_tahun_ajaran' => 2,
             'nama_matkul' => 'Matkul Tekpang1',
@@ -76,7 +76,7 @@ class MatkulDibukaSeeder extends Seeder
             'praktikum' => 0,
         ]);
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD008',
+            'id_matkul_dibuka' => 'MK0000008',
             'kode_matkul' => 'TP1102',
             'id_tahun_ajaran' => 2,
             'nama_matkul' => 'Matkul Tekpang2',
@@ -85,7 +85,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD009',
+            'id_matkul_dibuka' => 'MK0000009',
             'kode_matkul' => 'MT1101',
             'id_tahun_ajaran' => 1,
             'nama_matkul' => 'Matkul Material1',
@@ -94,7 +94,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD010',
+            'id_matkul_dibuka' => 'MK0000010',
             'kode_matkul' => 'MT1102',
             'id_tahun_ajaran' => 1,
             'nama_matkul' => 'Matkul Material2',
@@ -103,7 +103,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD011',
+            'id_matkul_dibuka' => 'MK0000011',
             'kode_matkul' => 'MT1101',
             'id_tahun_ajaran' => 2,
             'nama_matkul' => 'Matkul Material1',
@@ -112,7 +112,7 @@ class MatkulDibukaSeeder extends Seeder
         ]);
 
         MatkulDibuka::create([
-            'id_matkul_dibuka' => 'MD012',
+            'id_matkul_dibuka' => 'MK0000012',
             'kode_matkul' => 'MT1102',
             'id_tahun_ajaran' => 2,
             'nama_matkul' => 'Matkul Material2',
