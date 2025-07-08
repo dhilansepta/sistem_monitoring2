@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\DokumenKelas;
+use App\Models\TahunAjaran;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,8 +18,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            TahunAjaranSeeder::class,
             ProgramStudiSeeder::class,
-            User2Seeder::class,
+            UserSeeder::class,
+            BadgeSeeder::class,
+            DokumenPerkuliahanSeeder::class,
+            MataKuliahSeeder::class,
+            MatkulDibukaSeeder::class,
+            // KelasSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

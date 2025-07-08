@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('bobot_sks');
             $table->boolean('praktikum');
 
-            $table->unique(['kode_matkul', 'id_tahun_ajaran']);
+            // $table->unique(['kode_matkul', 'id_tahun_ajaran']);
             $table->foreign('id_tahun_ajaran')->references('id_tahun_ajaran')->on('tahun_ajaran')->onUpdate('cascade')->onDelete('cascade');
         });
     }

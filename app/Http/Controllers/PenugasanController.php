@@ -41,11 +41,16 @@ class PenugasanController extends Controller
             return redirect()->back()->with('failed', 'Tahun ajaran sudah ada!');
         }
 
-        $request->session()->put('tahun_ajaran', $request->all());
+        $tahun_aktif=TahunAjaran::where('is_aktif', 1)->first();
+        if($tahun_aktif) {
+            Gamifikasi::storeResultBadge($tahun_aktif->id_tahun_ajaran);
+            $tahun_aktif->update(['is_aktif' => 0]);
+        }
+        
         // save tahun ajaran ke database
         TahunAjaran::create([
             'tahun_ajaran' => $tahun_ajaran,
-            'is_aktif' => 0,
+            'is_aktif' => 1,
         ]);
 
         
@@ -54,13 +59,9 @@ class PenugasanController extends Controller
 
     public function stepTwo()
     {
-        // $data=session('tahun_ajaran');
         $data=TahunAjaran::latest('id_tahun_ajaran')->first();
-        // dd($data);
-        // $data['jenis']="Genap";
         $matkul=MataKuliah::matkulDibuka($data['jenis'])->get();
         $dokumen=DokumenPerkuliahan::all();
-        // dd($data);
         return view('super-admin.penugasan.step-two', ['data' => $data, 'matkul' => $matkul, 'dokumen' => $dokumen]);
     }
 
@@ -99,19 +100,7 @@ class PenugasanController extends Controller
         $data=session('data');
         // dd($data);
 
-        $tahun_aktif=TahunAjaran::where('is_aktif', 1)->first();
-        if($tahun_aktif) {
-            Gamifikasi::storeResultBadge($tahun_aktif->id_tahun_ajaran);
-            $tahun_aktif->update(['is_aktif' => 0]);
-        }
-
-        $tahun_ajar=session('tahun_ajaran');
-
-        $tahun=TahunAjaran::create([
-            'tahun_ajaran' => $tahun_ajar['tahun1'].'/'.$tahun_ajar['tahun2'].' '.$tahun_ajar['jenis'],
-            'is_aktif'    => 1,
-        ]);
-
+        $tahun=TahunAjaran::where('is_aktif', 1)->first();
        
         $mata_kuliah=MataKuliah::whereIn('kode_matkul', $data['kode_matkul'])->get();
         foreach($mata_kuliah as $key => $matkul) {
@@ -145,6 +134,8 @@ class PenugasanController extends Controller
         
         $dokumen_perkuliahan=DokumenPerkuliahan::whereIn('id_dokumen', $request->id_dokumen)->get();
 
+        $tahun_ajar=TahunAjaran::where('is_aktif', 1)->first();
+        // dd($tahun_ajar);
         foreach($dokumen_perkuliahan as $key => $dokumen) {
             $tenggat=createTenggat($tahun_ajar['tanggal_mulai_kuliah'], $dokumen->tenggat_waktu_default);
            

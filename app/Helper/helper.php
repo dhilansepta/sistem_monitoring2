@@ -69,13 +69,14 @@ function dikumpul($data) {
 }
 
 function createTenggat($date, $default) {
-    if($default > 0) {
-        $default=$default-1;
+    if ($default > 0) {
+        $default -= 1;
     }
-    $tenggat=Carbon::createFromLocaleIsoFormat('D MMMM YYYY', 'id', $date, 'Asia/Jakarta')->addWeek($default)->format('Y-m-d');
-    $dt=Carbon::parse($tenggat);
-    
-    return $dt->endOfWeek()->addDay(-2);
+    $carbonDate = Carbon::parse($date, 'Asia/Jakarta')->locale('id');
+
+    return $carbonDate
+        ->addWeeks($default)
+        ->endOfWeek(Carbon::FRIDAY);
 }
 
 function showWaktu($date) {
