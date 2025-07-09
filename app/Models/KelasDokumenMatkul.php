@@ -17,4 +17,18 @@ class KelasDokumenMatkul extends Model
     protected $fillable = [
         'kode_kelas', 'id_dokumen_matkul'
     ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kode_kelas', 'kode_kelas');
+    }
+    public function dokumen_matkul()
+    {
+        return $this->belongsTo(DokumenMatkul::class, 'id_dokumen_matkul', 'id_dokumen_matkul');
+    }
+
+    public function dosen_kelas()
+    {
+        return $this->belongsTo(DosenKelas::class, 'kode_kelas', 'kode_kelas');
+    }
 }

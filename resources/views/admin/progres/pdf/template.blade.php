@@ -1,0 +1,227 @@
+<?php
+    // Set the timezone to 'Asia/Jakarta'
+    date_default_timezone_set('Asia/Jakarta');
+
+    // Set the default locale to Indonesian
+    $bulan = [
+        '01' => 'Januari',
+        '02' => 'Februari',
+        '03' => 'Maret',
+        '04' => 'April',
+        '05' => 'Mei',
+        '06' => 'Juni',
+        '07' => 'Juli',
+        '08' => 'Agustus',
+        '09' => 'September',
+        '10' => 'Oktober',
+        '11' => 'November',
+        '12' => 'Desember'
+    ];
+
+    // Define the days of the week in Indonesian
+    $hari = [
+        'Sunday' => 'Minggu',
+        'Monday' => 'Senin',
+        'Tuesday' => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday' => 'Kamis',
+        'Friday' => 'Jumat',
+        'Saturday' => 'Sabtu'
+    ];
+
+    // Get the current date and time
+    $hariIni = date('l');
+    $tanggal = date('d') . ' ' . $bulan[date('m')] . ' ' . date('Y');
+    $waktu = date('H:i');
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>BERITA ACARA 
+ PEMERIKSAAN INSTRUMEN PERKULIAHAN KE-1
+</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            margin: 0;
+        }
+
+        .header,
+        .footer {
+            text-align: center;
+        }
+
+        .section {
+            margin-top: 20px;
+            margin: 0mm 5mm 0mm 5mm;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .no-border td {
+            border: none;
+        }
+
+        .signature-1 {
+            text-align: left;
+            margin: 40mm 20mm 0mm 20mm;
+        }
+
+        .signature-2 {
+            text-align: center;
+            margin: 0mm 20mm 0mm 20mm;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .alat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .alat-table th,
+        .alat-table td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .alat-table th {
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            width: 60%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 12px;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <img src="{{ public_path('assets/kop-surat.png') }}" alt="" width="100%">
+        <hr>
+        <h4>BERITA ACARA <br>
+ PEMERIKSAAN INSTRUMEN PERKULIAHAN KE-1
+</h4>
+    </div>
+
+    <div class="section">
+        <p align="justify">Berdasarkan Standar Proses Pembelajaran ITERA nomor ST/ITERA/SPMI-3.0 poin standar 2 dan 3 serta Standar Penilaian Pembelajaran Nomor ST/ITERA/SPMI-4.0 poin standar 2, 3, 4, 5, dan 6 maka dilakukan proses pemeriksaan instrumen perkuliahan berupa: 1) Rencana Pembelajaran Semester (RPS), 2) Kontrak kuliah, dan 3) Berita Acara Perkuliahan (BAP) pada; 
+        </p>
+        <table class="no-border" style="width: 100%; margin: 0mm 10mm 0mm 10mm;">
+            <tr>
+                <td style="width: 25%;">Hari, Tanggal</td>
+                <td style="width: 75%;">: {{ $hari[$hariIni] ?? '-' }}, {{ $tanggal ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">Waktu</td>
+                <td style="width: 75%;">: {{ $waktu ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">Tempat</td>
+                <td style="width: 75%;">: {{ $tempat ?? '-' }}</td>
+            </tr>
+        </table>
+
+        <p align="justify">yang dilaksanakan oleh Gugus Kendali Mutu Prodi Teknik Informatika dengan hasil pemeriksaan diketahui bahwa:</p>
+    </div>
+
+
+    <div class="footer">
+        <img width="100%" src="{{ public_path('assets/kop-surat-footer.png') }}" alt="">
+    </div>
+
+
+    <div style="page-break-before: always;"></div>
+
+    <div class="section">
+        <table class="alat-table" border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Mata Kuliah</th>
+                    <th>Dosen<br>Penanggung<br>Jawab</th>
+                    @foreach ($dokumenSesi as $namaDokumen)
+                        <th>{{ $namaDokumen }}</th>
+                    @endforeach
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($progres_pengumpulan as $i)
+                    @php
+                        $nama_matkul = $i->kelas->matkul->matkul->nama_matkul ?? '-';
+                        $nama_dosen = $i->dosen_kelas->dosen->nama ?? '-';
+                        $dokumen = $i->dokumen_matkul;
+                        $dokumen_nama = $dokumen->dokumen_ditugaskan->dokumen_perkuliahan->nama_dokumen ?? null;
+                        $dokumen_sesi = $dokumen->dokumen_ditugaskan->dokumen_perkuliahan->sesi ?? null;
+                        $file_dokumen = $dokumen->file_dokumen;
+                    @endphp
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $nama_matkul }}</td>
+                        <td>{{ $nama_dosen }}</td>
+
+                        {{-- Untuk setiap kolom dokumen, cek apakah cocok --}}
+                        @foreach ($dokumenSesi as $namaDokumen)
+                            @php
+                                $fileAda = ($dokumen_nama === $namaDokumen && $dokumen_sesi == $sesi && $file_dokumen);
+                            @endphp
+                            <td>{{ $fileAda ? 'Ada' : 'Tidak Ada' }}</td>
+                        @endforeach
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <div style="page-break-before: always;"></div>
+
+    <div class="section">
+        <p align="justify">Demikian berita acara pemeriksaan ini dibuat untuk dapat digunakan sebagaimana peruntukannya</p>
+    <div class="signature-2">
+        <table class="no-border" style="width: 100%; margin-top: 20px;">
+            <tr>
+                <td width="50%"><br><br>Mengetahui, <br>Prodi Teknik Informatika<br><br><br><br><br>Andika Setiawan, S.Kom., M.Cs.<br>NIP. 19911127 2022 03 1 007</td>
+                <td width="50%"><br>Lampung Selatan, {{ $tanggal ?? '-' }}<br>GKMP Teknik Informatika<br>
+                <br><br><br><br>Eko Dwi Nugroho, S.Kom., M.Cs.<br>NIP. 19910209 2020 1 279</td>
+            </tr>
+        </table>
+        <br><br>
+    </div>
+
+</body>
+
+</html>

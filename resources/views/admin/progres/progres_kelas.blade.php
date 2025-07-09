@@ -53,11 +53,19 @@
               <i class="fa fa-fw fa-download me-1"></i> Unduh Semua Dokumen
             </a>
           @endif
-          @if (count($classes) != 0)
+          {{-- @if (count($classes) != 0)
             <a class="btn btn-success" href="/progres-pengumpulan/resume-pengumpulan?tahun_ajaran={{ ($tahun_aktif != null) ? (request('tahun_ajaran') ?? $tahun_aktif->id_tahun_ajaran) : '' }}">
               <i class="fa fa-fw fa-rectangle-list me-1"></i> Tampilkan Resume Pengumpulan
             </a>
-          @endif
+          @endif --}}
+          <!-- Tombol untuk exportPDF -->
+          <button type="submit" role="button" class="btn btn-sm m-1 btn-secondary text-white"
+              onclick="event.preventDefault(); document.getElementById('exportPDF').submit();"><i class="fas fa-file-pdf"></i><span
+                  class="d-none d-sm-inline"> {{ __('PDF') }}</span></button>
+
+          <!-- Form exportPDF -->
+          <form id="exportPDF" action="{{ route('progres-pengumpulan.exportPDF') }}" method="GET" hidden>
+          </form>
         </div>
 
         <div class="mt-md-0 ms-md-3 space-x-1">
