@@ -64,7 +64,7 @@
                   class="d-none d-sm-inline"> {{ __('PDF') }}</span></button>
 
           <!-- Form exportPDF -->
-          <form id="exportPDF" action="{{ route('progres-pengumpulan.exportPDF') }}" method="GET" hidden>
+          <form id="exportPDF" action="{{ route('progres-pengumpulan.exportPDF', '1') }}" method="GET" hidden>
           </form>
         </div>
 

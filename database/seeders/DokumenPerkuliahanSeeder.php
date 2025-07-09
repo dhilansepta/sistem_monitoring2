@@ -43,7 +43,7 @@ class DokumenPerkuliahanSeeder extends Seeder
             'nama_dokumen'          => 'Kontrak Kuliah',
             'tenggat_waktu_default' => 2,
             'sesi'                  => 1,
-            'dikumpulkan_per'       => 1,
+            'dikumpulkan_per'       => 0,
             'template'              => null,
         ]);
 
@@ -99,7 +99,7 @@ class DokumenPerkuliahanSeeder extends Seeder
             'nama_dokumen'          => 'Berita Acara Perkuliahan',
             'tenggat_waktu_default' => 16,
             'sesi'                  => 3,
-            'dikumpulkan_per'       => 1,
+            'dikumpulkan_per'       => 0,
             'template'              => null,
         ]);
 
@@ -107,7 +107,7 @@ class DokumenPerkuliahanSeeder extends Seeder
             'nama_dokumen'          => 'Presensi Perkuliahan',
             'tenggat_waktu_default' => 16,
             'sesi'                  => 4,
-            'dikumpulkan_per'       => 1,
+            'dikumpulkan_per'       => 0,
             'template'              => null,
         ]);
 
@@ -115,7 +115,7 @@ class DokumenPerkuliahanSeeder extends Seeder
             'nama_dokumen'          => 'Rekap Data Nilai Akhir',
             'tenggat_waktu_default' => 18,
             'sesi'                  => 4,
-            'dikumpulkan_per'       => 1,
+            'dikumpulkan_per'       => 0,
             'template'              => null,
         ]);
 

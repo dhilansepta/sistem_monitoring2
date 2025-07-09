@@ -515,22 +515,48 @@ class ProgresController extends Controller
                     $q->where('prodi_id', $prodi_id);
                 });
         })
-            // Filter berdasarkan sesi
             ->whereHas('dokumen_matkul.dokumen_ditugaskan.dokumen_perkuliahan', function ($query) use ($sesi) {
                 $query->where('sesi', $sesi);
             })
             ->with([
                 'kelas.matkul.matkul',
-                'dosen_kelas',
+                'dosen_kelas.dosen',
                 'dokumen_matkul.dokumen_ditugaskan.dokumen_perkuliahan'
             ])
             ->get();
 
+        // Ambil nama dokumen unik untuk sesi tertentu
         $dokumenSesi = $progres_pengumpulan->filter(function ($item) use ($sesi) {
-            return $item->dokumen_matkul->dokumen_ditugaskan->dokumen_perkuliahan->sesi == $sesi;
+            return optional($item->dokumen_matkul->dokumen_ditugaskan->dokumen_perkuliahan)->sesi == $sesi;
         })->pluck('dokumen_matkul.dokumen_ditugaskan.dokumen_perkuliahan.nama_dokumen')->unique()->values();
 
-        $pdf = Pdf::loadView('admin.progres.pdf.template', compact('tempat', 'progres_pengumpulan', 'dokumenSesi', 'sesi', 'tahun_ajaran'))
+        // Grouping berdasarkan matkul + dosen
+        $groupedProgres = $progres_pengumpulan->groupBy(function ($item) {
+            $matkul = $item->kelas->matkul->matkul->nama_matkul ?? '-';
+            $dosen = $item->dosen_kelas->dosen->nama ?? '-';
+            return $matkul . '||' . $dosen;
+        })->map(function ($items) use ($dokumenSesi, $sesi) {
+            $first = $items->first();
+            $matkul = $first->kelas->matkul->matkul->nama_matkul ?? '-';
+            $dosen = $first->dosen_kelas->dosen->nama ?? '-';
+
+            $dokumens = [];
+            foreach ($dokumenSesi as $namaDokumen) {
+                $ada = $items->contains(function ($item) use ($namaDokumen, $sesi) {
+                    $dok = optional($item->dokumen_matkul->dokumen_ditugaskan)->dokumen_perkuliahan;
+                    return $dok && $dok->nama_dokumen === $namaDokumen && $dok->sesi == $sesi && $item->dokumen_matkul->file_dokumen;
+                });
+                $dokumens[$namaDokumen] = $ada;
+            }
+
+            return [
+                'matkul' => $matkul,
+                'dosen' => $dosen,
+                'dokumens' => $dokumens,
+            ];
+        })->values();
+
+        $pdf = Pdf::loadView('admin.progres.pdf.template', compact('tempat', 'groupedProgres', 'dokumenSesi', 'sesi', 'tahun_ajaran'))
             ->setPaper('A4', 'portrait');
 
         return $pdf->stream('Dokumen.pdf');
