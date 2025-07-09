@@ -224,8 +224,8 @@
                                 type="number"
                                 class="form-control mb-2"
                                 placeholder="Masukkan Sesi"
+                                id="sesi"
                                 name="sesi"
-                                value="{{ old('sesi') }}"
                                 required />
                             <label for="example-text-input">Minggu Tenggat Waktu</label>
                             <input
@@ -301,6 +301,7 @@
         $('.modal-edit').modal("show");
         $('#form-edit').attr('action', '/manajemen-data/dokumen-perkuliahan/'+jsfiles[id].id_dokumen);
         $('#nama_dokumen').val(jsfiles[id].nama_dokumen);
+        $('#sesi').val(jsfiles[id].sesi);
         $('#tenggat_waktu_default').val(jsfiles[id].tenggat_waktu_default);
         if(jsfiles[id].dikumpulkan_per === 0){
           $('#kelas').prop('checked', false);
