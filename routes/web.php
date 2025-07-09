@@ -101,7 +101,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/progres-pengumpulan', [ProgresController::class, 'index']);
     Route::get('/progres-pengumpulan/resume-pengumpulan', [ProgresController::class, 'showReport']);
     Route::get('/progres-pengumpulan/resume-pengumpulan/unduh', [ProgresController::class, 'generateReport']);
-   
+    Route::get('/progres-pengumpulan/exportPDF/{sesi}', [ProgresController::class, 'exportPDF'])->name('progres-pengumpulan.exportPDF');
+
     Route::get('/progres-pengumpulan/kelas', [ProgresController::class, 'showProgresKelas']);
     Route::get('/progres-pengumpulan/kelas/{id_dokumen}', [DokumenDikumpulController::class, 'showDokumenDikumpul']);
     Route::get('/progres-pengumpulan/kelas/unduh/{id_dokumen}', [DokumenDikumpulController::class, 'downloadDokumenDikumpul']);
