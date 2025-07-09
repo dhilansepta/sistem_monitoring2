@@ -58,14 +58,19 @@
               <i class="fa fa-fw fa-rectangle-list me-1"></i> Tampilkan Resume Pengumpulan
             </a>
           @endif --}}
+
+          @foreach ($dokumens as $i)
           <!-- Tombol untuk exportPDF -->
           <button type="submit" role="button" class="btn btn-sm m-1 btn-secondary text-white"
               onclick="event.preventDefault(); document.getElementById('exportPDF').submit();"><i class="fas fa-file-pdf"></i><span
-                  class="d-none d-sm-inline"> {{ __('PDF') }}</span></button>
+                  class="d-none d-sm-inline"> Sesi {{ $i->sesi }}</span></button>
 
           <!-- Form exportPDF -->
-          <form id="exportPDF" action="{{ route('progres-pengumpulan.exportPDF', '1') }}" method="GET" hidden>
+          <form id="exportPDF" action="{{ route('progres-pengumpulan.exportPDF', $i->sesi) }}" method="GET" hidden>
           </form>
+          @endforeach
+
+
         </div>
 
         <div class="mt-md-0 ms-md-3 space-x-1">

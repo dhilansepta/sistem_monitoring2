@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\DokumenDitugaskan;
 use App\Models\DokumenMatkul;
+use App\Models\DokumenPerkuliahan;
 use App\Models\Kelas;
 use App\Models\TahunAjaran;
 use App\Models\Gamifikasi;
@@ -29,8 +30,10 @@ class ProgresController extends Controller
             }])->kelasTahun(request('tahun_ajaran'))->searchKelas(request('search'))->orderBy('id_matkul_dibuka', 'asc')->get();
 
             $summary = kelasSummary($kelas);
+            
+            $sesi = DokumenPerkuliahan::select('sesi')->distinct()->get();
 
-            return view('admin.progres.progres_kelas', ['tahun_ajaran' => $tahun_ajaran, 'tahun_aktif' => $tahun_aktif, 'classes' => $summary->daftar_kelas, 'isDownloadable' => $summary->isDownloadable]);
+            return view('admin.progres.progres_kelas', ['tahun_ajaran' => $tahun_ajaran, 'tahun_aktif' => $tahun_aktif, 'classes' => $summary->daftar_kelas, 'isDownloadable' => $summary->isDownloadable, 'dokumens' => $sesi]);
         } else if (request('filter') == 'dokumen') {
             $dokumens = DokumenDitugaskan::with(['dokumen_matkul', 'dokumen_kelas'])
                 ->dokumenTahun(request('tahun_ajaran'))->searchDokumen(request('search'))->get();
