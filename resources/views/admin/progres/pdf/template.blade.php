@@ -148,7 +148,7 @@
             </tr>
             <tr>
                 <td style="width: 25%;">Waktu</td>
-                <td style="width: 75%;">: {{ $waktu ?? '-' }}</td>
+                <td style="width: 75%;">: {{ $waktu ?? '-' }} WIB</td>
             </tr>
             <tr>
                 <td style="width: 25%;">Tempat</td>
@@ -180,26 +180,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($progres_pengumpulan as $i)
-                    @php
-                        $nama_matkul = $i->kelas->matkul->matkul->nama_matkul ?? '-';
-                        $nama_dosen = $i->dosen_kelas->dosen->nama ?? '-';
-                        $dokumen = $i->dokumen_matkul;
-                        $dokumen_nama = $dokumen->dokumen_ditugaskan->dokumen_perkuliahan->nama_dokumen ?? null;
-                        $dokumen_sesi = $dokumen->dokumen_ditugaskan->dokumen_perkuliahan->sesi ?? null;
-                        $file_dokumen = $dokumen->file_dokumen;
-                    @endphp
+                @foreach ($groupedProgres as $index => $data)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $nama_matkul }}</td>
-                        <td>{{ $nama_dosen }}</td>
-
-                        {{-- Untuk setiap kolom dokumen, cek apakah cocok --}}
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $data['matkul'] }}</td>
+                        <td>{{ $data['dosen'] }}</td>
                         @foreach ($dokumenSesi as $namaDokumen)
-                            @php
-                                $fileAda = ($dokumen_nama === $namaDokumen && $dokumen_sesi == $sesi && $file_dokumen);
-                            @endphp
-                            <td>{{ $fileAda ? 'Ada' : 'Tidak Ada' }}</td>
+                            <td>{{ $data['dokumens'][$namaDokumen] ? 'Ada' : 'Tidak Ada' }}</td>
                         @endforeach
                     </tr>
                 @endforeach
