@@ -133,6 +133,7 @@
                           <option value="dosen" @selected(old('role') == 'dosen')>Dosen Pengampu</option>
                           <option value="admin" @selected(old('role') == 'admin')>Administrator Prodi</option>
                         </select>
+                        <input type="number" name="prodi_id" value="{{ Auth::user()->prodi_id }}" required hidden> 
                       </div>
                     </div>
                   </div>
@@ -253,6 +254,7 @@
                               <option value="dosen" id="dosen">Dosen Pengampu</option>
                               <option value="admin" id="admin">Administrator Prodi</option>
                             </select>
+                            <input type="number" name="prodi_id" value="{{ Auth::user()->prodi_id }}" required hidden> 
                           </div>
                         </div>
                       </div>
@@ -303,7 +305,8 @@
     </script>
 
      <script>
-      let jsfiles = @json($data);
+      // let jsfiles = @json($data);
+      let jsfiles = JSON.parse('{!! json_encode($data) !!}');
       
       //modal
       function edit_pengguna(id) {

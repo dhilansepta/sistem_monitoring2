@@ -63,11 +63,11 @@
               <i class="fa fa-fw fa-download me-1"></i> Unduh Semua Dokumen
             </a>
           @endif
-          @if (count($dokumens) != 0)
+          {{-- @if (count($dokumens) != 0)
             <a class="btn btn-success" href="/progres-pengumpulan/resume-pengumpulan?tahun_ajaran={{ ($tahun_aktif != null) ? (request('tahun_ajaran') ?? $tahun_aktif->id_tahun_ajaran) : '' }}">
               <i class="fa fa-fw fa-rectangle-list me-1"></i> Tampilkan Resume Pengumpulan
             </a>
-          @endif
+          @endif --}}
         </div>
         
         <div class="mt-md-0 ms-md-3 space-x-1">

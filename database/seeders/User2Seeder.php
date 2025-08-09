@@ -20,6 +20,10 @@ class User2Seeder extends Seeder
             'role'      => 'kaprodi',
             'prodi_id' => '1',
         ]);
+        $user->aktif_role()->create([
+            'is_dosen'  => 0,
+]);
+
         
         $user = User::create([
             'nama'      => 'Testing GKMF',

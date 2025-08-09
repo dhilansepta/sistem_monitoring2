@@ -78,7 +78,7 @@
                         <div class="mb-4">
                             <label class="form-label" for="prodi">Program Studi</label>
                             <select class="form-select @error('prodi') is-invalid @enderror" 
-                                id="prodi" name="prodi" required>
+                                id="prodi" name="prodi_id" required>
                                 <option value="">Pilih Program Studi</option>
                                 @foreach($programStudis as $prodi)
                                     <option value="{{ $prodi->id }}" {{ (old('prodi', $user->prodi_id) == $prodi->id) ? 'selected' : '' }}>

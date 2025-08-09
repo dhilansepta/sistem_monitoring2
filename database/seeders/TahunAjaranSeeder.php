@@ -23,7 +23,7 @@ class TahunAjaranSeeder extends Seeder
         TahunAjaran::create([
             'id_tahun_ajaran' => 2,
             'tahun_ajaran' => '2023/2024 Genap',
-            'is_aktif' => true,
+            'is_aktif' => false,
         ]);
     }
 }

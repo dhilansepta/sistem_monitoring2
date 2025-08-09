@@ -54,9 +54,9 @@ class ProgramStudiController extends Controller
             ->with('success', 'Program studi berhasil diperbarui');
     }
 
-    public function toggleStatus(ProgramStudi $programStudi)
+    public function toggleStatus($id)
     {
-        $prodi = ProgramStudi::findOrFail($programStudi);
+        $prodi = ProgramStudi::findOrFail($id);
 
         if($prodi->is_aktif){
             $prodi->update(['is_aktif' => false]);

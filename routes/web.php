@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataTemuanManagementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserManagementController;
@@ -172,4 +173,8 @@ Route::prefix('gkmf')->name('gkmf.')->group(function () {
     Route::post('/program-studi/{prodi}/toggle-status', [ProgramStudiController::class, 'toggleStatus'])->name('program-studi.toggle-status');
     Route::get('/penugasan/buat-penugasan-baru/form-pertama', [PenugasanController::class, 'stepOne'])->name('penugasan.step-one');
     Route::post('/penugasan/buat-penugasan-baru/store-form-pertama', [PenugasanController::class, 'storeStepOne'])->name('penugasan.store-step-one');
+
+    //Data Temuan
+    Route::get('/manajemen-data-temuan', [DataTemuanManagementController::class, 'index'])->name('manajemen-data-temuan.index');
+        // Route::get('/manajemen-data/dokumen-perkuliahan', [DataManagementController::class, 'showDokumen']);
 });

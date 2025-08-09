@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             MataKuliahSeeder::class,
             MatkulDibukaSeeder::class,
             KelasSeeder::class,
+            KriteriaSeeder::class,
+            SubKriteriaSeeder::class,
+            HasilTemuanSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();
